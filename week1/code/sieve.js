@@ -1,4 +1,7 @@
-var numbers = [];
+//https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+//
+
+var results = [];
 
 var prime = function(n)
 {
@@ -13,7 +16,7 @@ var prime = function(n)
     if(sieve[x] === true)
     {
       //console.log(x);
-      numbers.push(x);
+      results.push(x);
       var j = x;
       while(j <= n)
       {
@@ -25,5 +28,12 @@ var prime = function(n)
   };
 };
 
-prime(600);
-console.log(numbers.toString());
+prime(545);
+console.log(results.toString());
+console.log(results.length);
+
+var fs = require('fs');
+var out = 'primenumbers.txt';
+
+fs.writeFileSync(out, results.toString() + "\n");
+console.log(__filename);
